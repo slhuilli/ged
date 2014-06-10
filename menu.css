@@ -1,0 +1,142 @@
+
+#menucontainer {
+    height:48px;
+    background:#000;
+    display:block;
+    padding:1px 0 0 1px;
+    
+}
+
+#treemenu {
+    position:relative;
+    display:block;
+    height:24px;
+    font-size:11px;
+    font-weight:bold;
+    font-family:Arial,Verdana,Helvitica,sans-serif;
+}
+#treemenu ul {
+    margin:0px;
+    padding:0;
+    list-style-type:none;
+    width:auto;
+}
+#treemenu ul li {
+    display:block;
+    float:left;
+    margin:0 1px 0 0;
+}
+#treemenu ul li a {
+    display:block;
+    float:left;
+    color:#fff;
+    text-decoration:none;
+    font-size:10px;
+    padding:5px 4px 0 4px;
+    height:19px;
+    background:transparent url(images/menu_bg-OFF.gif) no-repeat top left;
+}
+#treemenu ul li a:hover {
+    color:#fff;
+    background:transparent url(images/menu_bg-OVER.gif) no-repeat top right;
+}
+#treemenu ul li a.current,#menu ul li a.current:hover {
+    color:#000;
+    background:#fff;
+}
+/* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
+.titre2{
+    font-size:210%;
+    font-weight: bold;
+    
+}
+
+.ui-spinner {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	padding: 0;
+	vertical-align: middle;
+}
+.ui-spinner-input {
+	border: none;
+	background: none;
+	color: inherit;
+	padding: 0;
+	margin: .2em 0;
+	vertical-align: middle;
+	margin-left: .4em;
+	margin-right: 22px;
+}
+.ui-spinner-button {
+	width: 16px;
+	height: 50%;
+	font-size: .5em;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	position: absolute;
+	cursor: default;
+	display: block;
+	overflow: hidden;
+	right: 0;
+}
+/* more specificity required here to override default borders */
+.ui-spinner a.ui-spinner-button {
+	border-top: none;
+	border-bottom: none;
+	border-right: none;
+}
+/* vertically center icon */
+.ui-spinner .ui-icon {
+	position: absolute;
+	margin-top: -8px;
+	top: 50%;
+	left: 0;
+}
+.ui-spinner-up {
+	top: 0;
+}
+.ui-spinner-down {
+	bottom: 0;
+}
+
+/* TR overrides */
+.ui-spinner .ui-icon-triangle-1-s {
+	/* need to fix icons sprite */
+	background-position: -65px -16px;
+	
+}
+
+
+#menu ul {
+ padding:0;
+ margin:0;
+ list-style-type:none;
+ }
+#menu li {
+ margin-left:2px;
+ float:left; /*pour IE*/
+ }
+#menu ul li a {
+ display:block;
+ float:left;   
+ width:80px;
+ background-color:red;
+ color:white;
+ text-decoration:none;
+ text-align:center;
+ padding:5px;
+ border:2px  solid;
+ /*pour avoir un effet "outset" avec IE :*/
+ border-color:yellow ;
+ border-radius: 1em;
+ text-justify: auto;
+  min-height: 30px;
+ }
+#menu ul li a:hover {
+ background-color:lightpink;
+ color: black;
+ border-color:yellow;;
+
+ } 

@@ -1,0 +1,301 @@
+html, body { 
+    margin : 0;
+    padding : 0;
+} 
+body { 
+    font : 73% Arial, "Trebuchet MS", Helvetica, Tahoma, sans-serif;
+    background : white url(images/bg.jpg) top center repeat-y;
+    color : #555;
+} 
+/*WRAP*/
+#wrap { 
+    width : 770px;
+    margin-left : auto;
+    margin-right : auto;
+    padding : 0;
+    color : #555;
+    background : transparent url(images/wrap_bg.jpg) repeat-x;
+} 
+/*BANNER*/
+#masthead { 
+    height : 100px;
+    padding : 0;
+    margin-bottom : 0;
+} 
+/*MAIN CONTAINER*/
+#container { 
+    width : 770px;
+    margin-left : auto;
+    margin-right : auto;
+    margin-top : 10px;
+    padding : 0;
+    line-height : 1.8em;
+} 
+/*MAIN CONTENT*/
+#content { 
+    padding : 1em;
+    margin : 0 240px 0 0;
+    border-right : 1px solid #eee;
+    min-height:100%;
+} 
+/*SIDEBAR*/
+#sidebar { 
+    float : right;
+    width : 200px;
+    margin-top : 0;
+    padding : 1em;
+} 
+/*FOOTER*/
+#footer { 
+    clear : both;
+    height : 50px;
+    padding : 0;
+    margin-bottom : 0;
+    margin-top : 40px;
+    text-align : center;
+    border-top : 5px solid #E80202;
+    color : #fff;
+    background : #000;
+} 
+/*TYPOGRAPHY*/
+h1 { 
+    float : left;
+    margin : 0;
+    padding : 50px 0 20px 25px;
+    font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
+    letter-spacing : 5px;
+    color : #fff;
+} 
+h2 { 
+    float : right;
+    margin : 0;
+    padding : 25px 20px 20px 0;
+    font : 90% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
+    letter-spacing : 3px;
+    color : #E80202;
+    font-weight: bold;
+} 
+h3 { 
+    margin : 0;
+    padding : 20px 0 20px 0;
+    border-bottom : 1px solid #aaa;
+    font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
+    text-transform : uppercase;
+    letter-spacing : 3px;
+    color : #E80202;
+}
+blockquote {
+    font-weight : bold;
+    font-style : italic;
+    border-bottom : 1px solid #aaa;
+    border-top : 1px solid #aaa;
+    color : #b29b35;
+} 
+/*LINKS*/
+a:link, a:visited { 
+    color : #E80202;
+    background : inherit;
+    text-decoration : underline;
+} 
+a:hover { 
+    color :  #636363;
+    background : inherit;
+    text-decoration : none;
+} 
+a img {
+    border: 0;
+} 
+/*IMAGES*/
+.left { 
+    float : left;
+    border : 0 solid #656c4a;
+    margin : 5px 0 10px 0;
+    padding : 10px;
+}
+/*SEARCH BOX*/
+legend { 
+    color : #E80202;
+} 
+input { 
+    background : #eee;
+} 
+
+.container {
+    overflow:hidden;
+    width:960px;
+    margin:20px auto;
+}
+.contr {
+    background-color: #212121;
+    color: #FFFFFF;
+    padding: 10px 0;
+    text-align: center;
+
+    border-radius:10px 10px 0 0;
+    -moz-border-radius:10px 10px 0 0;
+    -webkit-border-radius:10px 10px 0 0;
+}
+.upload_form_cont {
+    background: -moz-linear-gradient(#ffffff, #f2f2f2);
+    background: -ms-linear-gradient(#ffffff, #f2f2f2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f2f2f2));
+    background: -webkit-linear-gradient(#ffffff, #f2f2f2);
+    background: -o-linear-gradient(#ffffff, #f2f2f2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2')";
+    background: linear-gradient(#ffffff, #f2f2f2);
+
+    color: #000;
+    overflow: hidden;
+}
+.info {
+    background-color: #EEEEEE;
+    border: 1px solid #DDDDDD;
+    float: left;
+    font-weight: bold;
+    height: 530px;
+    margin: 20px;
+    position: relative;
+    width: 560px;
+}
+.info > div {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 15px 5px;
+}
+.info > h2 {
+    padding: 0 15px;
+}
+.info > canvas {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.info #url {
+    width: 400px;
+}
+#dropArea {
+    background-color: #DDDDDD;
+    border: 3px dashed #000000;
+    float: left;
+    font-size: 48px;
+    font-weight: bold;
+    height: 530px;
+    line-height: 530px;
+    margin: 20px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+}
+#dropArea.hover {
+    background-color: #CCCCCC;
+}
+#dropArea.uploading {
+    background: #EEEEEE url(loading.gif) center 30% no-repeat;
+}
+#result .s, #result .f {
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+}
+#result .s {
+    background-color: #77fc9f;
+}
+#result .f {
+    background-color: #fcc577;
+}
+.bouton{
+    border:1px red outset;
+    margin: 2px;
+    padding:2px;
+    background-color: red;
+    color:white;
+
+}
+
+.gauche{
+    width: 200px;
+
+
+}
+th{
+    text-align: left;
+    background-color: yellow;
+}
+
+#ordre{
+    border:1px #000000 dashed;
+    margin-top: 30px;
+}
+
+.liste_fichiers{
+    width: 200px;
+    height: 100px;
+    border: 1px #000 solid;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    margin-top:20px;
+    padding-right: 15px; 
+}
+
+body {
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-size: 62.5%;
+}
+
+#Tentete, #Tmenu, #Tcontenu, #Tfooter {
+    padding:1px 0; /* pour la fusion des marges*/
+}
+#TenteteTab {
+    background-color:#FF9900;
+    text-align:center;
+}
+#Tmain {
+    display:table;
+    margin:0;
+}
+.Tmenu  {
+    display:table-cell;
+    width:180px;
+}
+.Tcontenu {
+    display:table-cell;
+
+}
+#Tfooter {
+    background-color:#669933;
+    text-align:center;
+}
+
+a:link    {color:green;text-decoration: none;}
+a:visited {color:green;}
+a:hover   {color:red;}
+a:active  {color:yellow;}
+
+.icone{
+    width: 16px;
+    height: 16px;
+}
+
+fieldset legend{
+    background-color: red;
+    color:white;
+
+}
+
+#bloc-fichiers{
+    height: 350px; 
+    overflow-y: scroll;
+    width: 250px;
+    float:left;
+}
+
+#bloc-dossiers{
+    height: 350px; 
+    overflow-y: scroll;
+    width: 250px;
+    float:left;
+}
