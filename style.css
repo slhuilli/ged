@@ -37,6 +37,7 @@ body {
     margin : 0 240px 0 0;
     border-right : 1px solid #eee;
     min-height:100%;
+    
 } 
 /*SIDEBAR*/
 #sidebar { 
@@ -305,5 +306,14 @@ fieldset legend{
     background-color: red;
     color:white;
     border-radius: 5px;
-    
+
+}
+
+.sous-menu{
+    border: 2px red solid;
+    margin-left:20px;
+    padding:5px;
+    float:left;
+    border-radius: 10px;
+   
 }

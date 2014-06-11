@@ -568,6 +568,19 @@ function parcourirArborescence($repertoire)
                             
                             }
                     }
+                    
+                    if (($_GET["action"]=="affichageHierarchique") && ($_GET["gestion"] == "supprimer" ) && (isset($_GET["NFM_BG"])) && (isset($_GET["NFM_BD"])) )
+                    {
+                        /*Mise en place de l'algo de suppression simple, en 3 requetes : 
+                         * 1. La premiere suppprime l'element. Pour supprimer l'élémént, il faut deja trouver la PK
+                         * 2. La Deuxieme et la troisieme renumérotent la parti de l'arbre necessaire.
+                         */
+                        
+                        $sql = "delete from new_famille where NFM_BG=".$_GET["NFM_BG"]." and NFM_BD=".$_GET["NFM_BD"];
+                    }
+                    
+                    
+                    
                     ?>
 
                 </div>

@@ -69,6 +69,9 @@
 <icon BUILTIN="button_ok"/>
 <font SIZE="8"/>
 </node>
+<node TEXT="Tester droits des utilisateurs sur chacune des pages" ID="ID_1056010200" CREATED="1402488598562" MODIFIED="1402488661890">
+<font SIZE="8"/>
+</node>
 </node>
 <node TEXT="LE FICHIER" POSITION="right" ID="ID_183919556" CREATED="1397938366072" MODIFIED="1401973623515" HGAP="30" VSHIFT="10">
 <edge COLOR="#0000ff"/>
@@ -218,7 +221,7 @@
 <edge COLOR="#7c7c00"/>
 <node TEXT="Faut il pr&#xe9;voir le deverrouillage d&apos;un&#xa;fichier et sous quelles conditions" ID="ID_1217996278" CREATED="1401866524781" MODIFIED="1401866551640"/>
 </node>
-<node TEXT="MENU" POSITION="right" ID="ID_1299624651" CREATED="1401869235937" MODIFIED="1401973623562" VSHIFT="20">
+<node TEXT="MENU" POSITION="right" ID="ID_1299624651" CREATED="1401869235937" MODIFIED="1402468508390" VSHIFT="42">
 <edge COLOR="#ff0000"/>
 <font SIZE="8"/>
 <node TEXT="Pr&#xe9;voir l&apos;ajout et la suppression de donn&#xe9;es" ID="ID_78274531" CREATED="1401869240093" MODIFIED="1401973623562">
