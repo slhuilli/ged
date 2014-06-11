@@ -56,10 +56,7 @@ function parcourirArborescence($repertoire)
         <script src="./js/jquery.treeview.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                $('.tree_node').mousedown(function() {
-                    //alert($('.tree_link'));
-                }
-                );
+
                 $("#tree_link*").clone().appendTo($("#bloc-fichiers"));
                 $("#tree").treeview({
                     collapsed: true,
@@ -134,7 +131,7 @@ function parcourirArborescence($repertoire)
                     <ul>
                         <li><a href="index.php?action=ajouter_fichier">Ajouter un fichier</a></li>
                         <!--<li><a href="index.php?action=affecter-droits">Affecter des droits</a></li>-->
-                        <li><a href="index.php?action=hierarchie">Hiérarchie des fichiers</a></li>
+                        <li><a href="index.php?action=affichageHierarchique">Hiérarchie des fichiers</a></li>
 
                         <!--<li><a href="index.php?action=televersement">Téléverser des fichiers</a></li>-->
                         <li><a href="index.php?action=verrous">Verrouiller des fichiers</a></li>
@@ -233,9 +230,9 @@ function parcourirArborescence($repertoire)
                             //echo "toto";
                             include("workflow.php");
                             break;
-                        case "hierarchie" :
+                        case "affichageHierarchique" :
                             //echo "toto";
-                            include("voir.php");
+                            include("affichageHierarchique.php");
                     }
                     if (($_GET["action"] == "details") && isset($_GET["nro"]))
                     {
@@ -391,8 +388,7 @@ function parcourirArborescence($repertoire)
                                 $i++;
                             }
                         }
-                        /* echo "Tableau des id : ";
-                          print_r($monTab); */
+                        
                         echo "Insertion effectuée. Veuillez ranger désormais le fichier : ";
                         include("dhtmlgoodies-tree.html.php");
                         @mysql_free_result($id1);
@@ -521,6 +517,56 @@ function parcourirArborescence($repertoire)
                         }
                         mysql_free_result($id);
                         mysql_close($res);
+                    }
+
+                   
+                    
+                    if (($_GET["action"] == "hierarchie") && ($_GET["creer"] == "creer"))
+                    {
+                        include("connexion.php");
+                        $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
+                        mysql_select_db($database_name);
+                        $sql = "select nom from hierarchie where pk=\"" . $_GET["nro"] . "\"";
+
+                        $id = mysql_query($sql, $res) or die(mysql_errno($res) . ": " . mysql_error($res) . "\n");
+                        $famille = mysql_result($id, 0, 0);
+
+                        if (isset($_GET["nro"]) && isset($_SESSION["fichier"]))
+                        {
+                            //Tester si lr fichie est deja affecté a la famille. 
+                            //Si oui, on fait rien, 
+                            //si non, on fait l'ajout
+                            $sql = "select count(*) from fichiers_hierarchie where nro_fichier=\"" . $_SESSION["nro_fic"] . "\" and nro_groupe=" . $_GET["nro"];
+                            echo $sql."<br><br>";
+                            $id = mysql_query($sql, $res) or die(mysql_errno($res) . ": " . mysql_error($res) . "\n");
+                            $nombre = mysql_result($id, 0, 0);
+                           // echo "Il y a $nombre resultats";
+                            if ($nombre==0)
+                            {
+                                $sql = "insert into fichiers_hierarchie(nro_fichier,nro_groupe,alias) values('" . $_SESSION["nro_fic"] . "','" . $_GET["nro"] . "',0)";
+                            } else
+                            {
+                                $sql = "insert into fichiers_hierarchie(nro_fichier,nro_groupe,alias) values('" . $_SESSION["nro_fic"] . "','" . $_GET["nro"] . "',1)";
+                           }
+                            
+                            $id = mysql_query($sql, $res) or die(mysql_errno($res) . ": " . mysql_error($res) . "\n");
+                            mysql_free_result($id);
+                            mysql_close($res);
+                            //Selon le cas si ca a été un insert ou pas, le message est différent
+                            if (substr($sql,0,1) == 'i')
+                            {
+                                echo "<div id=\"resultat\">L'insertion du fichier est bien prise en compte. Si vous souhéitez créer des alias dans d'autre répertoires, veuillez choisi un autre répertoire.</div>";
+                            }
+                            else
+                            {
+                                echo "La création de cet alias s'est déroulée correctement";
+                            }
+                            echo "Le fichier <span style=\"color:red;\">" . $_SESSION["fichier"] . "</span> est bien affecté à la famille <span style=\"color:red;\">" . $famille . "</span>";
+                            echo "<br>ce fichier a été referencé ".$nombre." fois (fichier d'origine + alias)";
+                        
+                            ECHO "<br><br><a href=\"index.php\" style=\"font-weight:bold;background-color:green;color:white;padding:20px;border-radius:5px;\">TERMINE</a>";
+                            
+                            }
                     }
                     ?>
 

@@ -48,33 +48,7 @@ include("dhtmlgoodies_tree.class.php");
 </form>
 
 <div style="float:left;width: 100%;">
-    <div style="border:1px #000 dotted;">
-    Le fichier est décrit comme appartenant aux rubriques :
-    <?php
-    if (isset($_GET["nro"]))
-    {
-        //On commence a tester si ce fichier est déjà présent. Si non, ce n'est pas un alias, si oui c'est est un !
-        $sql = "select count(*) from fichiers_hierarchie where nro_groupe=" . $_GET["nro"];
-        $id = mysql_query($sql, $res) or die(mysql_error());
-        $nb = mysql_result($id, 0, 0);
-        if ($nb == 0)
-        {
-            $sql = "insert into fichiers_hierarchie(nro_fichier,nro_groupe,alias) values('" . $_SESSION["nro_fic"] . "','" . $_GET["nro"] . "',0)";
-            $id = mysql_query($sql, $res) or die(mysql_error());
-            $resultat = "le fichier est référencé comme <span style=\"color:red;\">principal</span>";
-        } else
-        {
-            $sql = "insert into fichiers_hierarchie(nro_fichier,nro_groupe,alias) values('" . $_SESSION["nro_fic"] . "','" . $_GET["nro"] . "',1)";
-            $id = mysql_query($sql, $res) or die(mysql_error());
-            $resultat = "le fichier est référencé comme <span style=\"color:orange;\">alias</span>";
-        }
-        $id = mysql_query($sql, $res);
-        mysql_free_result($id);
-        mysql_close($res);
-        echo $resultat;
-    }
-    ?>
-</div>
+   
     <div style="width:300px;">
     <span style="text-decoration: underline;">Légende : </span>
     <br><img src="images/_plus.png">Ajouter le fichier <span style="font-style: italic;"><?php echo $_POST["nom_fichier"]; ?> </span>à une rubrique/un dossier

@@ -297,8 +297,8 @@ class dhtmlgoodies_tree
                 }
                 echo "<li class=\"tree_node\">";
                 //echo "<a href='index.php?action=hierarchie&nro=" . $this->elementArray[0][$no]['id'] . "'><img src='images/_plus.png'></a><img class=\"tree_plusminus\" id=\"plusMinus" . $this->elementArray[$parentID][$no]['id'] . "\"><img src=\"" . $this->elementArray[$parentID][$no]['icon'] . "\">";
-                echo "<a name='lien' href='#' id='".$this->elementArray[$parentID][$no]['id']."'><img class=\"plusMinus\" src='images/_plus.png'></a><img class=\"tree_plusminus\" id=\"plusMinus" . $this->elementArray[$parentID][$no]['id'] . "\"><img src=\"" . $this->elementArray[$parentID][$no]['icon'] . "\">";
-                echo "<a href='index.php?action=hierarchie&creer=creer&nomFichier=".$_GET["nomFichier"]."&nro=" . $this->elementArray[$parentID][$no]['id'] . "' class=\"tree_link\"$urlAdd$onclick>" . $this->elementArray[$parentID][$no]['title'] . "</a>";
+                echo "<a name='lien' href='#' id='".$this->elementArray[$parentID][$no]['id']."'><img src=\"" . $this->elementArray[$parentID][$no]['icon'] . "\">";
+                echo "<a href='index.php?action=hierarchie&creer=creer&nro=" . $this->elementArray[$parentID][$no]['id'] . "' class=\"tree_link\"$urlAdd$onclick>" . $this->elementArray[$parentID][$no]['title'] . "</a>";
                 $this->drawSubNode($this->elementArray[$parentID][$no]['id']);
                 echo "</li>";
             }
@@ -326,11 +326,11 @@ class dhtmlgoodies_tree
             }
             //<a href=\"index.php?action=hierarchie&nro=".$this->elementArray[0][$no]['id']."\">"
             echo "<li class=\"tree_node\" id=\"node_" . $this->elementArray[0][$no]['id'] . "\">";
-            echo "<img id=\"plusMinus" . $this->elementArray[0][$no]['id'] . "\" class=\"tree_plusminus\" src=\"images/dhtmlgoodies_plus.gif\">";
+            echo "<img id=\"plusMinus" . $this->elementArray[0][$no]['id'] . "\" class=\"tree_plusminus\" >";
             
             //C'est le bon! 
-             echo "<img class=\"plusMinus\" src=\"images/_plus.png\"><img src=\"" . $this->elementArray[0][$no]['icon'] . "\">";
-             echo "<a name='lien' id=\"".$this->elementArray[0][$no]['id']."\"  class=\"tree_link\"$urlAdd$onclick>" . $this->elementArray[0][$no]['title'] . "</a>";
+             echo "<a href='index.php?action=hierarchie&creer=creer&id=".$this->elementArray[0][$no]['id']."'></a><img src=\"" . $this->elementArray[0][$no]['icon'] . "\">";
+             echo "<a name='lien' id=\"".$this->elementArray[0][$no]['id']."\"  class=\"tree_link\">" . $this->elementArray[0][$no]['title'] . "</a>";
             $this->drawSubNode($this->elementArray[0][$no]['id']);
             echo "</li>";
         }

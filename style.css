@@ -299,3 +299,11 @@ fieldset legend{
     width: 250px;
     float:left;
 }
+
+#resultat{
+    margin:25px;
+    background-color: red;
+    color:white;
+    border-radius: 5px;
+    
+}

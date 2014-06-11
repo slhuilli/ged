@@ -102,21 +102,21 @@
 <node TEXT="Afficher les fichiers verrouill&#xe9;s" ID="ID_1852323637" CREATED="1401973441281" MODIFIED="1401973623531" HGAP="110" VSHIFT="10">
 <font SIZE="8"/>
 </node>
-<node TEXT="classement physique du fichier" ID="ID_1537602206" CREATED="1397938449973" MODIFIED="1401973623531" HGAP="110">
-<font SIZE="8"/>
-</node>
-<node TEXT="versionning" ID="ID_639402986" CREATED="1397938462373" MODIFIED="1401973623531" HGAP="110">
+<node TEXT="versionning" ID="ID_639402986" CREATED="1397938462373" MODIFIED="1402402872215" HGAP="110">
+<icon BUILTIN="button_ok"/>
 <font SIZE="8"/>
 </node>
 <node TEXT="Ajouter un fichier" ID="ID_1597088355" CREATED="1398023512462" MODIFIED="1401973623531" HGAP="110" VSHIFT="-10">
 <font SIZE="8"/>
-<node TEXT="R&#xe9;f&#xe9;rencer" ID="ID_598680127" CREATED="1398023522250" MODIFIED="1401973623531" HGAP="30">
+<node TEXT="R&#xe9;f&#xe9;rencer" ID="ID_598680127" CREATED="1398023522250" MODIFIED="1402402830293" HGAP="19">
+<icon BUILTIN="button_ok"/>
 <font SIZE="8"/>
 </node>
-<node TEXT="Placer le fichier au bon endroit de la hiierarchie" ID="ID_493207739" CREATED="1400162108250" MODIFIED="1401973623531">
+<node TEXT="Placer le fichier au bon endroit de la hiierarchie" ID="ID_493207739" CREATED="1400162108250" MODIFIED="1402402821433">
+<icon BUILTIN="button_ok"/>
 <font SIZE="8"/>
 </node>
-<node TEXT="mots clefs" ID="ID_319278411" CREATED="1397938402184" MODIFIED="1401973623531" HGAP="30" VSHIFT="10">
+<node TEXT="mots clefs" ID="ID_319278411" CREATED="1397938402184" MODIFIED="1402402833168" HGAP="19" VSHIFT="-12">
 <icon BUILTIN="button_ok"/>
 <font SIZE="8"/>
 </node>
@@ -178,9 +178,10 @@
 <edge COLOR="#7c0000"/>
 <font SIZE="8"/>
 </node>
-<node TEXT="ORGANISATION HIERARCHIQUE DES FICHIERS" POSITION="right" ID="ID_4282125" CREATED="1400052005953" MODIFIED="1401973623546">
+<node TEXT="ORGANISATION HIERARCHIQUE DES FICHIERS" POSITION="right" ID="ID_4282125" CREATED="1400052005953" MODIFIED="1402411185203">
 <edge COLOR="#00007c"/>
 <font SIZE="8"/>
+<hook NAME="accessories/plugins/BlinkingNodeHook.properties"/>
 <node TEXT="Afficher la liste des r&#xe9;pertoire et de leur contenus" ID="ID_554862476" CREATED="1400052025203" MODIFIED="1401973623546">
 <font SIZE="8"/>
 <node TEXT="A partir de la base de donn&#xe9;e" ID="ID_385590313" CREATED="1400052055656" MODIFIED="1400052062765"/>
