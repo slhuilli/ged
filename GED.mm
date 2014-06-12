@@ -240,6 +240,7 @@
 <font SIZE="8"/>
 </node>
 </node>
+<node TEXT="Dans la hi&#xe9;rarchie, il y a un order by qui fiche le bordel car il y a un tri sur le libelle qui n&apos;est pas pertinent" ID="ID_538004958" CREATED="1402565606890" MODIFIED="1402565646953"/>
 </node>
 <node TEXT="Rajouter un systeme de vision d&apos;ensemble des fichiers de la GED dans un nouveau Mennu" POSITION="left" ID="ID_1161451631" CREATED="1401977830859" MODIFIED="1401977871718" HGAP="31" VSHIFT="33">
 <edge COLOR="#00ffff"/>

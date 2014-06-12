@@ -9,7 +9,7 @@ body {
 } 
 /*WRAP*/
 #wrap { 
-    width : 770px;
+    width : 970px;
     margin-left : auto;
     margin-right : auto;
     padding : 0;
@@ -24,7 +24,7 @@ body {
 } 
 /*MAIN CONTAINER*/
 #container { 
-    width : 770px;
+    width : 870px;
     margin-left : auto;
     margin-right : auto;
     margin-top : 10px;
@@ -37,12 +37,12 @@ body {
     margin : 0 240px 0 0;
     border-right : 1px solid #eee;
     min-height:100%;
-    
+    width: 650px;
 } 
 /*SIDEBAR*/
 #sidebar { 
     float : right;
-    width : 200px;
+    width : 180px;
     margin-top : 0;
     padding : 1em;
 } 
@@ -312,8 +312,17 @@ fieldset legend{
 .sous-menu{
     border: 2px red solid;
     margin-left:20px;
-    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
     float:left;
     border-radius: 10px;
    
+}
+
+#cadre-fihiers{
+    width:420px; 
+    height: 430px; 
+    background-color: lightcyan;
+    border:2px #000 dashed;
+    margin-left: 230px;
 }

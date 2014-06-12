@@ -233,6 +233,10 @@ function parcourirArborescence($repertoire)
                         case "affichageHierarchique" :
                             //echo "toto";
                             include("affichageHierarchique.php");
+                            break;
+                        case "placementRubrique":
+                            include("dhtmlgoodies-tree.html.php");
+                            break;
                     }
                     if (($_GET["action"] == "details") && isset($_GET["nro"]))
                     {
@@ -337,7 +341,7 @@ function parcourirArborescence($repertoire)
                         $t = explode("-", $_POST["date_expiration"]);
                         $de = $t[2] . "-" . $t[1] . "-" . $t[0];
                         $sql6 = "insert into fichiers(nom,chemin,type_mime,date,taille,date_creation,date_modification,version,date_expiration,verrouille,notes,workflow) ";
-                        $sql6 .= " values ('" . $_POST["nom_fichier"] . "','" . $_POST["chemin_fichier"] . "','" . $_POST["type_mime"] . "','" . date("Y-m-j h:m:s") . "'," . $_POST["tailleFic"] . ",'" . $dc . "','" . $dm . "','" . $_POST["version"] . "','" . $de . "','" . $_POST["verrouillage"] . "','" . $_POST["note"] . "',100);";
+                        $sql6 .= " values ('" . $_POST["nom_fichier"] . "','" . addslashes($_POST["chemin_fichier"]) . "','" . $_POST["type_mime"] . "','" . date("Y-m-j h:m:s") . "'," . $_POST["tailleFic"] . ",'" . $dc . "','" . $dm . "','" . $_POST["version"] . "','" . $de . "','" . $_POST["verrouillage"] . "','" . $_POST["note"] . "',100);";
                         $id6 = mysql_query($sql6, $res);
                         $nro_fic = mysql_insert_id();
                         $_SESSION["nro_fic"] = $nro_fic;
