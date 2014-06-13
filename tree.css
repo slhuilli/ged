@@ -46,3 +46,6 @@
     margin: 0 auto;
     margin-bottom: 40px;
 }
+
+a, A:link, a:visited, a:active, A:hover
+		{color: #000000; text-decoration: none; }

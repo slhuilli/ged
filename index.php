@@ -47,6 +47,11 @@ function parcourirArborescence($repertoire)
         <script src="./jQuery/jquery-ui.min.js"></script>
         <script src="./jQuery/jquery.godtree.js"></script>
 
+        <script language="JavaScript" src="tree.js"></script>
+<script language="JavaScript" src="tree_items.php"></script>
+<script language="JavaScript" src="tree_tpl.js"></script>
+
+
         <link rel="stylesheet" type="text/css" href="./jQuery/jquery-ui.css" />
         <script src="./jQuery/jquery-1.10.2.js"></script>
         <script src="jQuery/sample.js"></script>
@@ -233,6 +238,7 @@ function parcourirArborescence($repertoire)
                         case "affichageHierarchique" :
                             //echo "toto";
                             include("affichageHierarchique.php");
+                            //include("./tree/tree.php");
                             break;
                         case "placementRubrique":
                             include("dhtmlgoodies-tree.html.php");
@@ -583,7 +589,30 @@ function parcourirArborescence($repertoire)
                         $sql = "delete from new_famille where NFM_BG=".$_GET["NFM_BG"]." and NFM_BD=".$_GET["NFM_BD"];
                     }
                     
+
+                    if (($_GET["action"]== "ajouter"))// &&  ($_GET["action"]== "ajouter") && (isset($_GET["ordre_courant"])))
+                    {
+                            //Recherche du dossier courant
+                            $sql = "select label from new_famille where nro_ordre='".$_GET["orde_courant"]."'";
+                            echo $sql;
+                            echo '<form name="saisie" method="post" action="index.php?action=affichageHierarchique">';
+                            echo "Merci de saisir le nom du sous-répertoire à créer : ";
+                            echo '<input type="hidden" name="pk" value="'.$_GET["orde_courant"].'">';
+                            echo '<input type="text" name="nom_repertoire" value="">';
+                            echo '<input type="submit" name="valider_creation_repertoire" value="Valider">';
+                            echo '</form>';
+                       // echo "Ajout d'un sous-dossier dans le dossier";
+                    }
                     
+                    if ($_POST["valider_creation_repertoire"] == "Valider" )
+                    {
+                     //   $sql = "insert into new_famille values('".."',";
+                    }
+                    
+                    if ($_POST["valider_creation_repertoire"] == "valider")
+                    {
+                        header("index.php?action=affichageHierarchique");
+                    }
                     
                     ?>
 

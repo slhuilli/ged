@@ -185,9 +185,9 @@
 <edge COLOR="#00007c"/>
 <font SIZE="8"/>
 <hook NAME="accessories/plugins/BlinkingNodeHook.properties"/>
-<node TEXT="Afficher la liste des r&#xe9;pertoire et de leur contenus" ID="ID_554862476" CREATED="1400052025203" MODIFIED="1401973623546">
+<node TEXT="Afficher la liste des r&#xe9;pertoire et de leur contenus" ID="ID_554862476" CREATED="1400052025203" MODIFIED="1402573125453">
+<icon BUILTIN="button_ok"/>
 <font SIZE="8"/>
-<node TEXT="A partir de la base de donn&#xe9;e" ID="ID_385590313" CREATED="1400052055656" MODIFIED="1400052062765"/>
 </node>
 <node TEXT="Finir l&apos;organisation hierarchique" ID="ID_1986365364" CREATED="1400164641984" MODIFIED="1401973623546">
 <font SIZE="8"/>
