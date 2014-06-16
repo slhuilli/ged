@@ -21,7 +21,7 @@
             $str = $str."&nbsp;";
         }
         $row++;
-        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><a href=\"index.php?action=affichageHierarchique&action=supprimerRepertoire&orde_courant=".$nro_ordre."\"><img src=\"images/trash.gif\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
+        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><a href=\"index.php?action=affichageHierarchique&voir=voir&ordre_courant=".$nro_ordre."\"><img src=\"images/oeil.png\" alt = \"\" title=\"Voir le contenu\"></a><a href=\"index.php?action=affichageHierarchique&action=supprimerRepertoire&orde_courant=".$nro_ordre."\"><img src=\"images/trash.gif\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
         $str='';
     }
     ?>
@@ -33,11 +33,13 @@
     <div id="cadre-fihiers">Liste des fichiers de la rubrique 
         <?php
 
-
+        $sql = "select label from new_famille where nro_ordre=".$_GET["ordre_courant"];
+        $id = mysql_query($sql, $res) or die("Erreur : " . mysql_error(). $sql);
+        $nom = mysql_result($id,0,0);
         echo "<span style=\"color:red;\">" . utf8_encode($nom) . "</span><br>";
         $sql = "select nom,chemin,type_mime,date,taille from fichiers_hierarchie,fichiers where fichiers_hierarchie.nro_fichier=fichiers.nro_fichier and nro_groupe=" . $nro_famille;
 
-        $id = mysql_query($sql, $res) or die("Erreur : " . mysql_error());
+     //   $id = mysql_query($sql, $res) or die("Erreur : " . mysql_error(). $sql);
         echo "il y a " . mysql_num_rows($id) . " resultats;";
         $row = 0;
         echo "<div style=\"width:100%;text-align:center;\">";
