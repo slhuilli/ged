@@ -48,8 +48,8 @@ function parcourirArborescence($repertoire)
         <script src="./jQuery/jquery.godtree.js"></script>
 
         <script language="JavaScript" src="tree.js"></script>
-<script language="JavaScript" src="tree_items.php"></script>
-<script language="JavaScript" src="tree_tpl.js"></script>
+        <script language="JavaScript" src="tree_items.php"></script>
+        <script language="JavaScript" src="tree_tpl.js"></script>
 
 
         <link rel="stylesheet" type="text/css" href="./jQuery/jquery-ui.css" />
@@ -189,6 +189,22 @@ function parcourirArborescence($repertoire)
                 <div id="content">
                     <h3>Bienvenue sur notre gestion documentaire</h3>
                     <?php
+                    if ($_POST["valider_creation_repertoire"] == "Valider")
+                    {
+                        //On commencepar rechercher lesd valeurs de X  et Y
+                       
+                        include("connexion.php");
+                        $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
+                        mysql_select_db($database_name);
+                        $id = mysql_query($sql, $res);
+                        $sql = "update new_famille set Y=Y+1 where Y>=".$_POST["y"];
+                        $id = mysql_query($sql, $res);
+                        $sql = "insert into new_famille(label,prec,X,Y) values('".$_POST["nom_repertoire"]."','".$_POST["pk"]."','".($_POST["x"]+1)."','".$_POST["y"]."');";
+                        $id = mysql_query($sql, $res);
+                        mysql_free_result($id);
+                        mysql_close($res);
+                    }
+
                     if (($_GET["action"] == "supp_utilisateur") && (isset($_GET["login"])))
                     {
                         // echo "Action : ".$_GET["action"]."<br>Login".$_GET["login"];
@@ -196,7 +212,7 @@ function parcourirArborescence($repertoire)
                         $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
                         mysql_select_db($database_name);
                         $sql = "delete from users where login='" . $_GET["login"] . "';";
-                        echo $sql;
+                      //  echo $sql;
                         $id = mysql_query($sql, $res);
                     }
                     if (empty($_GET["action"]))
@@ -398,7 +414,7 @@ function parcourirArborescence($repertoire)
                                 $i++;
                             }
                         }
-                        
+
                         echo "Insertion effectuée. Veuillez ranger désormais le fichier : ";
                         include("dhtmlgoodies-tree.html.php");
                         @mysql_free_result($id1);
@@ -529,8 +545,8 @@ function parcourirArborescence($repertoire)
                         mysql_close($res);
                     }
 
-                   
-                    
+
+
                     if (($_GET["action"] == "hierarchie") && ($_GET["creer"] == "creer"))
                     {
                         include("connexion.php");
@@ -547,73 +563,67 @@ function parcourirArborescence($repertoire)
                             //Si oui, on fait rien, 
                             //si non, on fait l'ajout
                             $sql = "select count(*) from fichiers_hierarchie where nro_fichier=\"" . $_SESSION["nro_fic"] . "\" and nro_groupe=" . $_GET["nro"];
-                            echo $sql."<br><br>";
+                            echo $sql . "<br><br>";
                             $id = mysql_query($sql, $res) or die(mysql_errno($res) . ": " . mysql_error($res) . "\n");
                             $nombre = mysql_result($id, 0, 0);
-                           // echo "Il y a $nombre resultats";
-                            if ($nombre==0)
+                            // echo "Il y a $nombre resultats";
+                            if ($nombre == 0)
                             {
                                 $sql = "insert into fichiers_hierarchie(nro_fichier,nro_groupe,alias) values('" . $_SESSION["nro_fic"] . "','" . $_GET["nro"] . "',0)";
                             } else
                             {
                                 $sql = "insert into fichiers_hierarchie(nro_fichier,nro_groupe,alias) values('" . $_SESSION["nro_fic"] . "','" . $_GET["nro"] . "',1)";
-                           }
-                            
+                            }
+
                             $id = mysql_query($sql, $res) or die(mysql_errno($res) . ": " . mysql_error($res) . "\n");
                             mysql_free_result($id);
                             mysql_close($res);
                             //Selon le cas si ca a été un insert ou pas, le message est différent
-                            if (substr($sql,0,1) == 'i')
+                            if (substr($sql, 0, 1) == 'i')
                             {
                                 echo "<div id=\"resultat\">L'insertion du fichier est bien prise en compte. Si vous souhéitez créer des alias dans d'autre répertoires, veuillez choisi un autre répertoire.</div>";
-                            }
-                            else
+                            } else
                             {
                                 echo "La création de cet alias s'est déroulée correctement";
                             }
                             echo "Le fichier <span style=\"color:red;\">" . $_SESSION["fichier"] . "</span> est bien affecté à la famille <span style=\"color:red;\">" . $famille . "</span>";
-                            echo "<br>ce fichier a été referencé ".$nombre." fois (fichier d'origine + alias)";
-                        
+                            echo "<br>ce fichier a été referencé " . $nombre . " fois (fichier d'origine + alias)";
+
                             ECHO "<br><br><a href=\"index.php\" style=\"font-weight:bold;background-color:green;color:white;padding:20px;border-radius:5px;\">TERMINE</a>";
-                            
-                            }
+                        }
                     }
-                    
-                    if (($_GET["action"]=="affichageHierarchique") && ($_GET["gestion"] == "supprimer" ) && (isset($_GET["NFM_BG"])) && (isset($_GET["NFM_BD"])) )
+
+                    if (($_GET["action"] == "affichageHierarchique") && ($_GET["gestion"] == "supprimer" ) && (isset($_GET["NFM_BG"])) && (isset($_GET["NFM_BD"])))
                     {
-                        /*Mise en place de l'algo de suppression simple, en 3 requetes : 
+                        /* Mise en place de l'algo de suppression simple, en 3 requetes : 
                          * 1. La premiere suppprime l'element. Pour supprimer l'élémént, il faut deja trouver la PK
                          * 2. La Deuxieme et la troisieme renumérotent la parti de l'arbre necessaire.
                          */
-                        
-                        $sql = "delete from new_famille where NFM_BG=".$_GET["NFM_BG"]." and NFM_BD=".$_GET["NFM_BD"];
-                    }
-                    
 
-                    if (($_GET["action"]== "ajouter"))// &&  ($_GET["action"]== "ajouter") && (isset($_GET["ordre_courant"])))
-                    {
-                            //Recherche du dossier courant
-                            $sql = "select label from new_famille where nro_ordre='".$_GET["orde_courant"]."'";
-                            echo $sql;
-                            echo '<form name="saisie" method="post" action="index.php?action=affichageHierarchique">';
-                            echo "Merci de saisir le nom du sous-répertoire à créer : ";
-                            echo '<input type="hidden" name="pk" value="'.$_GET["orde_courant"].'">';
-                            echo '<input type="text" name="nom_repertoire" value="">';
-                            echo '<input type="submit" name="valider_creation_repertoire" value="Valider">';
-                            echo '</form>';
-                       // echo "Ajout d'un sous-dossier dans le dossier";
+                        $sql = "delete from new_famille where NFM_BG=" . $_GET["NFM_BG"] . " and NFM_BD=" . $_GET["NFM_BD"];
                     }
-                    
-                    if ($_POST["valider_creation_repertoire"] == "Valider" )
+
+
+                    if (($_GET["action"] == "ajouter"))// &&  ($_GET["action"]== "ajouter") && (isset($_GET["ordre_courant"])))
                     {
-                     //   $sql = "insert into new_famille values('".."',";
+                        echo '<form name="saisie" method="post" action="index.php?action=affichageHierarchique">';
+                        echo "Merci de saisir le nom du sous-répertoire à créer : ";
+                        $sql = "select X,Y from new_famille where nro_ordre='" . $_GET["orde_courant"] . "';";
+                        //echo $sql;
+                        include("connexion.php");
+                        $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
+                        mysql_select_db($database_name);
+                        $id = mysql_query($sql, $res);
+                        $X = mysql_result($id, 0, 0);
+                        $Y = mysql_result($id, 0, 1);
+                        echo '<input type="hidden" name="pk" value="' . $_GET["orde_courant"] . '">';
+                        echo '<input type="hidden" name="x" value="' . $X . '">';
+                        echo '<input type="hidden" name="y" value="' . ($Y+1) . '">';
+                        echo '<input type="text" name="nom_repertoire" value="">';
+                        echo '<input type="submit" name="valider_creation_repertoire" value="Valider">';
+                        echo '</form>';
+                        // echo "Ajout d'un sous-dossier dans le dossier";
                     }
-                    
-                    if ($_POST["valider_creation_repertoire"] == "valider")
-                    {
-                        header("index.php?action=affichageHierarchique");
-                    }
-                    
                     ?>
 
                 </div>

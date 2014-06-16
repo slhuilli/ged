@@ -13,14 +13,16 @@
         $nro_ordre = mysql_result($id, $row, "nro_ordre");
         $nom = mysql_result($id, $row, "label");
         $prec = mysql_result($id,$row, "prec");
-    //    $X = mysql_result($id, $row, "X");
+        $X = mysql_result($id, $row, "X");
+       
         $Y = mysql_result($id, $row, "Y");
         for ($i=0;$i<$Y*2;$i++)
         {
             $str = $str."&nbsp;";
         }
         $row++;
-        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\"></a><br>";
+        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
+        $str='';
     }
     ?>
 </div>
@@ -30,20 +32,7 @@
     <br>
     <div id="cadre-fihiers">Liste des fichiers de la rubrique 
         <?php
-        //Suppression de la rubrique
-        if ($_GET["gestion"] == "supprimer")
-        {
 
-
-            $sql = "delete from new_famille where NFM_BG=" . $_GET["NFM_BG"] . " and NFM_BD=" . $_GET["NFM_BD"];
-            // echo "<span style=\"color:red;\">".$sql."</span><br>";
-            $id = mysql_query($sql, $res);
-            echo "<script type=\"text/javascript\">
-<!--
-window.location = \"index.php?action=affichageHierarchique&gestion=supprimer&NFM_BG=''\"
-//-->
-</script>";
-        }
 
         echo "<span style=\"color:red;\">" . utf8_encode($nom) . "</span><br>";
         $sql = "select nom,chemin,type_mime,date,taille from fichiers_hierarchie,fichiers where fichiers_hierarchie.nro_fichier=fichiers.nro_fichier and nro_groupe=" . $nro_famille;
