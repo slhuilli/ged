@@ -37,10 +37,8 @@
         $id = mysql_query($sql, $res) or die("Erreur : " . mysql_error(). $sql);
         $nom = mysql_result($id,0,0);
         echo "<span style=\"color:red;\">" . utf8_encode($nom) . "</span><br>";
-        $sql = "select nom,chemin,type_mime,date,taille from fichiers_hierarchie,fichiers where fichiers_hierarchie.nro_fichier=fichiers.nro_fichier and nro_groupe=" . $nro_famille;
-
-     //   $id = mysql_query($sql, $res) or die("Erreur : " . mysql_error(). $sql);
-        echo "il y a " . mysql_num_rows($id) . " resultats;";
+        $sql = "select nom,chemin,type_mime,date,taille from fichiers_hierarchie,fichiers where fichiers_hierarchie.nro_fichier=fichiers.nro_fichier and nro_groupe=" . $_GET["ordre_courant"];
+        $id = mysql_query($sql,$res) or die("La recherche a échoué. ".mysql_errno()." ".mysql_error());
         $row = 0;
         echo "<div style=\"width:100%;text-align:center;\">";
         echo "<table style=\" border-width:1px;border-style:solid;border-color:black; border-collapse: collapse;\">";

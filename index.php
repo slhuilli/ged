@@ -152,7 +152,7 @@ function parcourirArborescence($repertoire)
 
                 <div id="sidebar">
 
-                    <img src="images/rose.jpg" alt="" />
+                    <img src="images/logo_sea.jpg" alt="" style="width:95%;" />
 
                     <div id="navcontainer">
 
@@ -189,22 +189,32 @@ function parcourirArborescence($repertoire)
                 <div id="content">
                     <h3>Bienvenue sur notre gestion documentaire</h3>
                     <?php
+                    
+
                     if ($_POST["valider_creation_repertoire"] == "Valider")
                     {
                         //On commencepar rechercher lesd valeurs de X  et Y
-                       
+
                         include("connexion.php");
                         $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
                         mysql_select_db($database_name);
                         $id = mysql_query($sql, $res);
-                        $sql = "update new_famille set Y=Y+1 where Y>=".$_POST["y"];
+                        $sql = "update new_famille set Y=Y+1 where Y>=" . $_POST["y"];
                         $id = mysql_query($sql, $res);
-                        $sql = "insert into new_famille(label,prec,X,Y) values('".$_POST["nom_repertoire"]."','".$_POST["pk"]."','".($_POST["x"]+1)."','".$_POST["y"]."');";
+                        $sql = "insert into new_famille(label,prec,X,Y) values('" . $_POST["nom_repertoire"] . "','" . $_POST["pk"] . "','" . ($_POST["x"] + 1) . "','" . $_POST["y"] . "');";
                         $id = mysql_query($sql, $res);
                         mysql_free_result($id);
                         mysql_close($res);
                     }
 
+                    if (($_GET["action"] == "affichageHierarchique") && ($_GET["voir"] == "voir") )
+                    {
+                        echo "toto";
+                       //VOir
+                        $sql = "select * from fichiers_hierarchie where fichiers_hierarchie.nro_groupe=".$_GET["voir"];
+                        echo $sql;
+                    }
+                    
                     if (($_GET["action"] == "supp_utilisateur") && (isset($_GET["login"])))
                     {
                         // echo "Action : ".$_GET["action"]."<br>Login".$_GET["login"];
@@ -212,7 +222,7 @@ function parcourirArborescence($repertoire)
                         $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
                         mysql_select_db($database_name);
                         $sql = "delete from users where login='" . $_GET["login"] . "';";
-                      //  echo $sql;
+                        //  echo $sql;
                         $id = mysql_query($sql, $res);
                     }
                     if (empty($_GET["action"]))
@@ -593,18 +603,7 @@ function parcourirArborescence($repertoire)
                         }
                     }
 
-                    if (($_GET["action"] == "affichageHierarchique") && ($_GET["gestion"] == "supprimer" ) && (isset($_GET["NFM_BG"])) && (isset($_GET["NFM_BD"])))
-                    {
-                        /* Mise en place de l'algo de suppression simple, en 3 requetes : 
-                         * 1. La premiere suppprime l'element. Pour supprimer l'élémént, il faut deja trouver la PK
-                         * 2. La Deuxieme et la troisieme renumérotent la parti de l'arbre necessaire.
-                         */
-
-                        $sql = "delete from new_famille where NFM_BG=" . $_GET["NFM_BG"] . " and NFM_BD=" . $_GET["NFM_BD"];
-                    }
-
-
-                    if (($_GET["action"] == "ajouter"))// &&  ($_GET["action"]== "ajouter") && (isset($_GET["ordre_courant"])))
+                   if (($_GET["action"] == "ajouter"))// &&  ($_GET["action"]== "ajouter") && (isset($_GET["ordre_courant"])))
                     {
                         echo '<form name="saisie" method="post" action="index.php?action=affichageHierarchique">';
                         echo "Merci de saisir le nom du sous-répertoire à créer : ";
@@ -618,11 +617,39 @@ function parcourirArborescence($repertoire)
                         $Y = mysql_result($id, 0, 1);
                         echo '<input type="hidden" name="pk" value="' . $_GET["orde_courant"] . '">';
                         echo '<input type="hidden" name="x" value="' . $X . '">';
-                        echo '<input type="hidden" name="y" value="' . ($Y+1) . '">';
+                        echo '<input type="hidden" name="y" value="' . ($Y + 1) . '">';
                         echo '<input type="text" name="nom_repertoire" value="">';
                         echo '<input type="submit" name="valider_creation_repertoire" value="Valider">';
                         echo '</form>';
                         // echo "Ajout d'un sous-dossier dans le dossier";
+                        mysql_free_result($id);
+                        mysql_close($res);
+                    }
+
+                    if (($_GET["action"] == "supprimerRepertoire"))// &&  ($_GET["action"]== "ajouter") && (isset($_GET["ordre_courant"])))
+                    {
+                        echo "Suppression d'un répertoire vide.<div style=\"font-style:italic;\">INFO : Seuls les répertoire vides peuvent être supprimés de la hiérarchie</div>";
+                        //On commence par tester que le repertoire que l'on veut supprimer est bien vide
+                        include("connexion.php");
+                        $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
+                        mysql_select_db($database_name);
+                        $sql = "select * from new_famille where prec=" . $_GET["orde_courant"];
+                        $id = mysql_query($sql, $res);
+                        $nb = mysql_num_rows($id);                       
+                        if ($nb>=1)
+                        {
+                            echo "<div style=\"width:100%;background-color:red;color:white;font-weight:bold;text-align:center;\"><img src=\"images/attention.png\">Vous ne pouvez pas suppprimer ce dossier car il en contient d'autres</div>";
+                        }
+                        else
+                        {
+                            $sql2 = "delete from new_famille where nro_ordre=" . $_GET["orde_courant"];
+                            $id2 = mysql_query($sql2, $res) or die("Impossible d'effectuer la  suppression" . mysql_errno() . " " . mysql_error());
+                            echo "Suppression effectuée.<br><a href=\"index.php?action=affichageHierarchique\">Retour</a>";
+                            mysql_free_result($id);
+                            mysql_close($res);
+                        }
+                        mysql_free_result($id);
+                        mysql_close($res);
                     }
                     ?>
 
