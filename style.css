@@ -52,12 +52,17 @@ body {
     height : 50px;
     padding : 0;
     margin-bottom : 0;
-    margin-top : 40px;
+    margin-top : 0px;
     text-align : center;
     border-top : 5px solid #E80202;
     color : #fff;
     background : #000;
 } 
+
+#footer a
+{
+    color:green;
+}
 /*TYPOGRAPHY*/
 h1 { 
     float : left;
@@ -118,7 +123,7 @@ legend {
     color : #E80202;
 } 
 input { 
-    background : #eee;
+    background : #eee;   
 } 
 
 .container {
@@ -321,8 +326,17 @@ fieldset legend{
 
 #cadre-fihiers{
     width:420px; 
-    height: 430px; 
+    height: 480px; 
     background-color: lightcyan;
     border:2px #000 dashed;
     margin-left: 230px;
+    margin-top:-15px;
 }
+
+fieldset{
+    border-radius: 10px;
+}
+
+ fieldset > legend {
+        border-radius: 10px;
+    }

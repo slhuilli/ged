@@ -1,5 +1,5 @@
 <div>Consultation de la GED</div>
-<div style="background-color: lightyellow;width: 33%;height: 480px;overflow-y:scroll;float:left;margin:5px;">
+<div style="background-color: lightyellow;width: 33%;height: 480px;overflow-y:scroll;overflow-x:scroll;float:left;margin:5px;text-overflow:ellipsis;">
     <?php
     include("connexion.php");
     $res = mysql_connect($hostname, $db_username, $db_password) or die("Connexion echouée");
@@ -21,7 +21,7 @@
             $str = $str."&nbsp;";
         }
         $row++;
-        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><a href=\"index.php?action=affichageHierarchique&voir=voir&ordre_courant=".$nro_ordre."\"><img src=\"images/oeil.png\" alt = \"\" title=\"Voir le contenu\"></a><a href=\"index.php?action=affichageHierarchique&action=supprimerRepertoire&orde_courant=".$nro_ordre."\"><img src=\"images/trash.gif\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
+        echo "<div style=\"width:5000px;\">".$str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><a href=\"index.php?action=affichageHierarchique&voir=voir&ordre_courant=".$nro_ordre."\"><img src=\"images/oeil.png\" alt = \"\" title=\"Voir le contenu\"></a><a href=\"index.php?action=affichageHierarchique&action=supprimerRepertoire&orde_courant=".$nro_ordre."\"><img src=\"images/trash.gif\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
         $str='';
     }
     ?>
