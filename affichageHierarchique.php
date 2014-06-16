@@ -21,7 +21,7 @@
             $str = $str."&nbsp;";
         }
         $row++;
-        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
+        echo $str.$nom."<a href=\"index.php?action=affichageHierarchique&action=ajouter&orde_courant=".$nro_ordre."\"><img src=\"images/_plus.png\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><a href=\"index.php?action=affichageHierarchique&action=supprimerRepertoire&orde_courant=".$nro_ordre."\"><img src=\"images/trash.gif\" alt = \"\" title=\"Créer un *sous* répertoire\"></a><br>";
         $str='';
     }
     ?>

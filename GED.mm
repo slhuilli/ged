@@ -198,6 +198,10 @@
 <node TEXT="Suppression d la rubrique si et seulement si plus aucun doc n&apos;est referenc&#xe9;" ID="ID_1678759856" CREATED="1400164697437" MODIFIED="1401973623562">
 <font SIZE="8"/>
 </node>
+<node TEXT="Affichage hi&#xe9;rarchique du fichier" ID="ID_1391415523" CREATED="1402907490281" MODIFIED="1402907532359">
+<icon BUILTIN="button_ok"/>
+<font SIZE="8"/>
+</node>
 </node>
 <node TEXT="D&#xe9;placement/suppression de la structure h&#xe9;rarchique d&apos;un fichier" ID="ID_1486871998" CREATED="1401970816765" MODIFIED="1401973623562">
 <font SIZE="8"/>
